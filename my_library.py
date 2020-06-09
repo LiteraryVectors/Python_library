@@ -81,4 +81,3 @@ def sent2vec (s:str) -> list:
       v = get_vec(token.text)
       s_average.append(v)
   if len(s_average)== 0:
-    
