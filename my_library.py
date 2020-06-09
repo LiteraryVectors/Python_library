@@ -84,7 +84,7 @@ def sent2vec (s:str) -> list:
     
   #Other
   
-    def bayes_gothic_tester(testing_table:dframe, evidence_bag:dframe, training_table:dframe, laplace:float=1.0) -> list:
+  def bayes_gothic_tester(testing_table:dframe, evidence_bag:dframe, training_table:dframe, laplace:float=1.0) -> list:
   assert isinstance(testing_table, pd.core.frame.DataFrame), f'test_table not a dataframe but instead a {type(testing_table)}'
   assert isinstance(evidence_bag, pd.core.frame.DataFrame), f'evidence_bag not a dframe but instead a {type(evidence_bag)}'
   assert isinstance(training_table, pd.core.frame.DataFrame), f'training_table not a dataframe but instead a {type(training_table)}'
