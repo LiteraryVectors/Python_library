@@ -16,7 +16,7 @@ def hello_ds():
 
 #************************************** WEEK 1
 def foobar():
-  return None
+  return 'bayes'
 
 def heat_map(zipped, label_list):
   case_list = []
