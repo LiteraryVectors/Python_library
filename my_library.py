@@ -1,9 +1,22 @@
 import pandas as pd
+import numpy
+from typing import TypeVar, Callable
+narray = TypeVar('numpy.ndarray')
+import numpy as np
+import spacy
+spnlp = TypeVar('spacy.lang.en.English')  #for type hints
+import os
+os.system("python -m spacy download en_core_web_md")
+import en_core_web_md
+nlp = en_core_web_md.load()
 
 def hello():
   print('hello')
 def foo():
   print('foo')
+  
+  #Vector Functions: 
+    
 def dividev(x:list, c) -> list:
   assert isinstance(x, list), f"x must be a list but instead is {type(x)}"
   assert isinstance(c, int) or isinstance(c, float), f"c must be an int or a float but instead is {type(c)}"
@@ -43,7 +56,8 @@ def meanv(matrix: list) -> list:
       sumv = addv(sumv, row)
     mean = dividev(sumv, len(matrix))
     return mean
-  
+#Word Embeddings Fuctions:
+
 def ordered_embeddings(target_vector, table):
   names = table.index.tolist()
   ordered_list = []
@@ -68,7 +82,8 @@ def get_vec(s:str) -> list:
       s_average.append(v)
   if len(s_average)== 0:
     
-    
+  #Other
+  
     def bayes_gothic_tester(testing_table:dframe, evidence_bag:dframe, training_table:dframe, laplace:float=1.0) -> list:
   assert isinstance(testing_table, pd.core.frame.DataFrame), f'test_table not a dataframe but instead a {type(testing_table)}'
   assert isinstance(evidence_bag, pd.core.frame.DataFrame), f'evidence_bag not a dframe but instead a {type(evidence_bag)}'
