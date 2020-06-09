@@ -81,3 +81,6 @@ def sent2vec (s:str) -> list:
       v = get_vec(token.text)
       s_average.append(v)
   if len(s_average)== 0:
+    s_average = [[0]* 300]
+  mv = meanv(s_average)
+  return mv
