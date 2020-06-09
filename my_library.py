@@ -83,20 +83,6 @@ def sent2vec (s:str) -> list:
   if len(s_average)== 0:
     
   #Other
-  
-  result_list = []
-  for i,target_row in testing_table.iterrows():
-    raw_text = target_row['text']  #a sentence
-    doc = nlp(raw_text.lower())  #create the tokens
-
-    evidence_list = []
-    for token in doc:
-      if not token.is_alpha or token.is_stop: continue
-      evidence_list.append(token.text)
-
-    p_tuple = bayes_laplace(list(set(evidence_list)), evidence_bag, training_table, laplace)
-    result_list.append(p_tuple)
-  return result_list
 
 def bayes(evidence:set, evidence_bag:dict, training_table:dframe) -> tuple:
   assert isinstance(evidence, set), f'evidence not a set but instead a {type(evidence)}'
