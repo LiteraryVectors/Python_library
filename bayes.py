@@ -99,7 +99,7 @@ def new_row(table, row_list):
   return table
 
 def update_gothic_row(word_table, word:str, author:str):
-  author_list = ['ML', 'HW']
+  author_list = ['ML','HW']
   assert author in author_list, f'{author} not found in {author_list}'
   value_list = [[1,0], [0,1]]
   word_list = word_table['word'].tolist()
