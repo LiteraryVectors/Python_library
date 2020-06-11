@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy
+from numpy.linalg import norm
 from typing import TypeVar, Callable
 narray = TypeVar('numpy.ndarray')
 import numpy as np
