@@ -307,6 +307,7 @@ def update_tweet_row(word_table, word:str, author:int):
   value_list = [[1,0], [0,1]]
   word_list = word_table['word'].tolist()
   real_word = word if type(word) == str else word.text
+  k = author_list.index(author)
 
   if real_word in word_list:
     j = word_list.index(real_word)
