@@ -118,7 +118,7 @@ def update_gothic_row(word_table, word:str, author:str):
     word_table.loc[len(word_table)] = row
   return word_table
 
-def update_gothic_row_sent(sent_table, sent:list, author:str):
+def update_gothic_row_sent(sent_table, sent:token, author:str):
   author_list = ['ML','HW']
   assert author in author_list, f'{author} not found in {author_list}'
   value_list = [[1,0], [0,1]]
