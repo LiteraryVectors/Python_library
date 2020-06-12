@@ -122,9 +122,9 @@ def update_gothic_row_sent(sent_table, sent:list, author:str):
   author_list = ['ML','HW']
   assert author in author_list, f'{author} not found in {author_list}'
   value_list = [[1,0], [0,1]]
-  word_list = word_table['word'].tolist()
+  sent_list = sent_table['Sent'].tolist()
   k = author_list.index(author)
-  return word_table
+  return sent_table
 
 
 def euclidean_distance(vect1:list ,vect2:list) -> float:
