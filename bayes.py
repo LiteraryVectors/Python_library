@@ -122,8 +122,8 @@ def update_gothic_row_sent(sent_table, sent:list, author:str):
   author_list = ['ML','HW']
   assert author in author_list, f'{author} not found in {author_list}'
   value_list = [[1,0], [0,1]]
-  sent_list = sent_table['Sent'].tolist()
-  real_sent = sent if type(sent) == list else doc.sent
+  sent_list = sent_table[token].tolist()
+  real_sent = sent if type(token) == list else doc.sent
   k = author_list.index(author)
 
   if real_sent in sent_list:
