@@ -103,7 +103,7 @@ def update_gothic_row(word_table, word:str, author:str):
   assert author in author_list, f'{author} not found in {author_list}'
   value_list = [[1,0], [0,1]]
   word_list = word_table['word'].tolist()
-  real_word = word if type(word) == str else word.text
+  real_word = word if type(word) == list else word.text
   k = author_list.index(author)
 
   if real_word in word_list:
@@ -116,6 +116,15 @@ def update_gothic_row(word_table, word:str, author:str):
     row = [real_word] + value_list[k]
     word_table.loc[len(word_table)] = row
   return word_table
+
+def update_gothic_row_sent(word_table, sent:list, author:str):
+  author_list = ['ML','HW']
+  assert author in author_list, f'{author} not found in {author_list}'
+  value_list = [[1,0], [0,1]]
+  word_list = word_table['word'].tolist()
+  k = author_list.index(author)
+  return word_table
+
 
 def euclidean_distance(vect1:list ,vect2:list) -> float:
   assert isinstance(vect1, list), f'vect1 is not a list but a {type(vect1)}'
