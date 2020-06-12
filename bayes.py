@@ -123,9 +123,19 @@ def update_gothic_row_sent(sent_table, sent:list, author:str):
   assert author in author_list, f'{author} not found in {author_list}'
   value_list = [[1,0], [0,1]]
   sent_list = sent_table['Sent'].tolist()
+  real_sent = sent if type(sent) == list else doc.sent
   k = author_list.index(author)
-  return sent_table
 
+  if real_sent in sent_list:
+    j = sent_list.index(sent_word)
+    row = sent_table.iloc[j].tolist()
+    row[1+k] += 1
+    sent_table.loc[j] = row
+  else:
+    #not seen yet
+    row = [real_sent] + value_list[k]
+    sent_table.loc[len(sent_table)] = row
+  return sent_table
 
 def euclidean_distance(vect1:list ,vect2:list) -> float:
   assert isinstance(vect1, list), f'vect1 is not a list but a {type(vect1)}'
