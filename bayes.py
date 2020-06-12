@@ -49,7 +49,7 @@ def bayes_gothic(evidence:list, evidence_bag:dframe, training_table:dframe, lapl
   assert 'author' in training_table, f'author column is not found in training_table'
 
   author_list = training_table.author.to_list()
-  mapping = ['EAP', 'MWS', 'HPL']
+  mapping = ['HW', 'ML']
   label_list = [mapping.index(auth) for auth in author_list]
   n_classes = len(set(label_list))
   #assert len(list(evidence_bag.values())[0]) == n_classes, f'Values in evidence_bag do not match number of unique classes ({n_classes}) in labels.'
