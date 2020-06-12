@@ -103,7 +103,7 @@ def update_gothic_row(word_table, word:str, author:str):
   assert author in author_list, f'{author} not found in {author_list}'
   value_list = [[1,0], [0,1]]
   word_list = word_table['word'].tolist()
-  real_word = word if type(word) == list else word.text
+  real_word = word if type(word) #== list else word.text
   k = author_list.index(author)
 
   if real_word in word_list:
