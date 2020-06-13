@@ -443,8 +443,6 @@ def bayes_tester(testing_table:dframe, evidence_bag:dict, training_table:dframe,
     result_list.append(p_tuple)
   return result_list
 
-#***************************************** WEEK 4
-'''
 import nltk
 nltk.download('stopwords')
 from nltk.corpus import stopwords
@@ -464,7 +462,7 @@ def build_word_bag(stopwords:list, training_table:dframe) -> dict:
   assert isinstance(stopwords, list), f'stopwords must be a list but saw a {type(stopwords)}'
   assert isinstance(training_table, pd.core.frame.DataFrame), f'training_table not a dataframe but instead a {type(training_table)}'
   bow = {}
-  starters = [[1,0,0], [0,1,0], [0,0,1]]
+  starters = [[1,0], [0,1]]
   for i,row in training_table.iterrows():
     raw_text = row['text']
     words = set(get_clean_words(stopwords, raw_text))
@@ -473,9 +471,8 @@ def build_word_bag(stopwords:list, training_table:dframe) -> dict:
         if word in bow:
             bow[word][label] += 1
         else:
-            bow[word] = list(starters[label])  #need list to get a copy
+            bow[word] = list(starters[label])  
   return bow
-'''
 
 def robust_bayes(evidence:set, evidence_bag:dict, training_table:dframe, laplace:float=1.0) -> tuple:
   assert isinstance(evidence, set), f'evidence not a set but instead a {type(evidence)}'
