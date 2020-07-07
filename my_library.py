@@ -127,3 +127,52 @@ def inverse_cosine_similarity(vect1:list ,vect2:list) -> float:
   normal_result = cosine_similarity(vect1, vect2)
   return 1.0 - normal_result
 
+def build_word_table(books:dict):
+  assert isinstance(books, dict), f'books not a dictionary but instead a {type(books)}'
+
+  all_titles = list(books.keys())
+  n = len(all_titles)
+  word_table = pd.DataFrame(columns=['word'] + all_titles)
+  m = max([len(v)  for v in books.values()])  #Number of characters in longest book
+  nlp.max_length = m
+
+  for i,title in enumerate(all_titles):
+    print(f'({i+1} of {n}) Processing {title} ({len(books[title])} characters)')
+    doc = nlp(books[title].lower()) #parse the entire book into tokens
+    out = display(progress(0, len(doc)), display_id=True)
+    cut = int(len(doc)*.1)
+    for j,token in enumerate(doc):
+      if  token.is_alpha and not token.is_stop:
+        word_table = update_word_table(word_table, token.text, title)
+      if j%cut==0:
+        out.update(progress(j+1, len(doc)))  #shows progress bar
+        time.sleep(0.02)
+
+  word_table = word_table.infer_objects()
+  #word_table = word_table.astype(int)  #all columns
+  word_table = word_table.astype({'word':str})  #now just word column
+
+  sorted_word_table = word_table.sort_values(by=['word'])
+  sorted_word_table = sorted_word_table.reset_index(drop=True)
+  sorted_word_table = sorted_word_table.set_index('word')  #set the word column to be the table index
+
+  return sorted_word_table
+
+def most_similar_word(word_table, target_word:str) -> list:
+  assert isinstance(word_table, pd.core.frame.DataFrame), f'word_table not a dframe but instead a {type(word_table)}'
+
+  target_vec = list(nlp.vocab.get_vector(target_word))
+  distance_list = []
+  word_list = word_table.index.to_list()
+  out = display(progress(0, len(word_list)), display_id=True)
+  cut = int(len(word_list)*.1)
+  for i,word in enumerate(word_list):
+    vec = list(nlp.vocab.get_vector(word))
+    d = euclidean_distance(target_vec, vec)
+    distance_list.append([word, d])
+    if i%cut==0:
+      out.update(progress(i+1, len(word_list)))  #shows progress bar
+      time.sleep(0.02)
+  ordered = sorted(distance_list, key=lambda p: p[1])
+  return ordered
+
