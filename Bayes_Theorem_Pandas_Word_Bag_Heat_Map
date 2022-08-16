@@ -8,17 +8,6 @@ from typing import TypeVar, Callable
 dframe = TypeVar('pd.core.frame.DataFrame')
 narray = TypeVar('numpy.ndarray')
 
-
-#========================
-
-def hello_ds():
-    print("Big hello to you")
-
-
-#************************************** WEEK 1
-def foobar():
-  return 'bayes'
-
 def heat_map(zipped, label_list):
   case_list = []
   for i in range(len(label_list)):
@@ -271,7 +260,6 @@ def cm_f1(confusion_dictionary: dict) -> float:
   
   return f1
 
-#************************************** WEEK 2
 
 def fast_cosine(v1:narray, v2:narray) -> float:
   assert isinstance(v1, numpy.ndarray), f"v1 must be a numpy array but instead is {type(v1)}"
@@ -364,7 +352,6 @@ def bayes_tweet(evidence:list, evidence_bag, training_table, laplace:float=1.0) 
     results.append(max(numerator * probs[a_class], 2.2250738585072014e-308))
 
   return tuple(results)
-#***************************************** WEEK 3
 
 
 
