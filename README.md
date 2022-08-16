@@ -16,4 +16,4 @@ import Python_library as pl
 
 # Test the import
 
-`my.hello()`
+`pl.hello()`
