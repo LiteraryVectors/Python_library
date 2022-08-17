@@ -7,6 +7,8 @@ import numpy
 from typing import TypeVar, Callable
 dframe = TypeVar('pd.core.frame.DataFrame')
 narray = TypeVar('numpy.ndarray')
+import en_core_web_md
+nlp = en_core_web_md.load() 
 
 def heat_map(zipped, label_list):
   case_list = []
