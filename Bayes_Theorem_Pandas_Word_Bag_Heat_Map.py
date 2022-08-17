@@ -511,3 +511,32 @@ def robust_bayes_tester(testing_table:dframe, evidence_bag:dict, training_table:
     p_tuple = robust_bayes(e_set, evidence_bag, training_table)
     result_list.append(p_tuple)
   return result_list
+
+#Vectors and Embeddings
+
+def ordered_embeddings(target_vector, table):
+  names = table.index.tolist()
+  ordered_list = []
+  for i in range(len(names)):
+    name = names[i]
+    row = table.loc[name].tolist()
+    d = up.euclidean_distance(target_vector, row)
+    ordered_list.append([d, names[i]])
+  ordered_list = sorted(ordered_list)
+
+  return ordered_list
+
+def get_vec(s:str) -> list:
+    return nlp.vocab[s].vector.tolist()
+  
+  def sent2vec (s:str) -> list:
+  doc = nlp(s)#parsed sentences from the doc
+  s_average = []
+  for token in doc:
+    if token.is_alpha and not token.is_stop:#Remember stop words? 
+      v = get_vec(token.text)
+      s_average.append(v)
+  if len(s_average)== 0:
+    s_average = [[0]* 300]
+  mv = meanv(s_average)
+  return mv
