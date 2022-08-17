@@ -529,7 +529,7 @@ def ordered_embeddings(target_vector, table):
 def get_vec(s:str) -> list:
     return nlp.vocab[s].vector.tolist()
   
-  def sent2vec (s:str) -> list:
+def sent2vec (s:str) -> list:
   doc = nlp(s)#parsed sentences from the doc
   s_average = []
   for token in doc:
