@@ -514,6 +514,9 @@ def robust_bayes_tester(testing_table:dframe, evidence_bag:dict, training_table:
 
 #Vectors and Embeddings
 
+import en_core_web_md
+nlp = en_core_web_md.load() 
+
 def ordered_embeddings(target_vector, table):
   names = table.index.tolist()
   ordered_list = []
