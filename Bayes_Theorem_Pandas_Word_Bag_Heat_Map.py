@@ -1,4 +1,5 @@
 import numpy as np
+import spacy
 from numpy.linalg import norm
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -564,6 +565,8 @@ def ordered_embeddings(target_vector, table):
   ordered_list = sorted(ordered_list)
 
   return ordered_list
+
+nlp = spacy.load("en_core_web_lg")
 
 def get_vec(s:str) -> list:
     return nlp.vocab[s].vector.tolist()
