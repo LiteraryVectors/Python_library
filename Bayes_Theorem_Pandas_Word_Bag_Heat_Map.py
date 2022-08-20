@@ -1,5 +1,4 @@
 import numpy as np
-import spacy
 from numpy.linalg import norm
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -7,11 +6,6 @@ import numpy
 from typing import TypeVar, Callable
 dframe = TypeVar('pd.core.frame.DataFrame')
 narray = TypeVar('numpy.ndarray')
-
-from spacy.lang.en.examples import sentences 
-import en_core_web_lg
-nlp = spacy.load("en_core_web_lg")
-
 
 def heat_map(zipped, label_list):
   case_list = []
