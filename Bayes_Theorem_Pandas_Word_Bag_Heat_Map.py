@@ -9,6 +9,7 @@ dframe = TypeVar('pd.core.frame.DataFrame')
 narray = TypeVar('numpy.ndarray')
 
 from spacy.lang.en.examples import sentences 
+import en_core_web_lg
 nlp = spacy.load("en_core_web_lg")
 
 
